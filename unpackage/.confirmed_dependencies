@@ -1,0 +1,30 @@
+{
+  "index.html": {
+    "href": "index.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/bluebird_titleBar.js",
+      "js/bluebird_editBox.js",
+      "js/bluebird_button.js",
+      "js/bluebird_buttonRow.js",
+      "js/bluebird_dialogBox.js",
+      "js/bluebird_list.js",
+      "js/bluebird_timer.js",
+      "js/bluebird_lable.js",
+      "js/bluebird_range.js",
+      "js/bluebird_ajax.js",
+      "js/bluebird_client.js",
+      "js/bluebird_string.js",
+      "js/bluebird_array.js",
+      "js/bluebird_localStorage.js",
+      "js/bluebird_convert.js",
+      "css/mui.min.css",
+      "css/icons-extra.css",
+      "js/zai_daskjh.js",
+      "js/zai_tool.js",
+      "css/zai_tool.css"
+    ],
+    "refer": [],
+    "priority": 0
+  }
+}

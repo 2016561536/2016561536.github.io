@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-    <title>授权码计算</title>
+<head>
+    <meta charset="utf-8">
+    <title>主窗口</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -11,44 +11,418 @@
     <style type="text/css">
         body{background-color:#EFEFF4;}
     </style>
-	</head>
-	<body>
-		<div class="mui-content" style="background-color:transparent">
+    <style type="text/css">
+        .mui-input-range input[type="range"]
+        {
+            background-color: #999999;
+        }   
+        
+        .mui-input-range input[type="range"]::-webkit-slider-thumb
+        {
+            background-color: #0000FF;
+        } 
+    </style>
+</head>
+<body>
+	<header id="标题栏1" class="mui-bar mui-bar-nav" style="background:#F7F7F7;">
+		<a class="mui-icon mui-icon-left-nav mui-pull-left" style="color:#007AFF;"></a>
+		<h1 class="mui-title" style="color:#000000;">客户端</h1>
+		<a class="mui-icon mui-icon-bars mui-pull-right" style="color:#007AFF;"></a>
+	</header>
+
+
+	<div class="mui-content" style="background-color:transparent">
 
 		<div class="mui-input-row" style="margin:5px;display:block">
-			<input id="编辑框1" type="text" placeholder="设备识别符" style="color:#000000;font-size:14px;margin:0px 0px 0px 0px;"></input>
+			<input id="编辑框2" type="text" placeholder="IP地址" style="color:#000000;font-size:14px;margin:0px 0px 0px 0px;"></input>
 		</div>
 
 		<div class="mui-input-row" style="text-align:center;margin:5px;display:block">
-			<button id="按钮1" type="button" class="mui-btn mui-btn-primary" style="width:100%;height:40px;float:none;margin:0px 0px 0px 0px;font-size:14px;">处理</button>
+			<button id="按钮1" type="button" class="mui-btn mui-btn-primary" style="width:100%;height:40px;float:none;margin:0px 0px 0px 0px;font-size:14px;">打开连接</button>
 		</div>
-		
+
+		<div class="mui-input-row" style="text-align:center;margin:5px;display:block">
+			<button id="按钮3" type="button" class="mui-btn mui-btn-primary" style="width:100%;height:40px;float:none;margin:0px 0px 0px 0px;font-size:14px;">关闭连接</button>
+		</div>
+
+		<div id="按钮组1" class="mui-input-row" style="margin:5px;display:-webkit-flex;text-align:center;">
+			<button id="0" type="button" class="mui-btn mui-btn-primary" style="-webkit-flex:1;height:40px;margin:0px 0px 0px 0px;font-size:14px;">按钮0</button>
+			<button id="1" type="button" class="mui-btn mui-btn-primary" style="-webkit-flex:1;height:40px;margin:0px 0px 0px 5px;font-size:14px;">按钮1</button>
+		</div>
+
+
+		<div class="mui-input-row" style="text-align:center;margin:5px;display:block">
+			<button id="按钮2" type="button" class="mui-btn mui-btn-primary" style="width:100%;height:40px;float:none;margin:0px 0px 0px 0px;font-size:14px;">取可用进程列表</button>
+		</div>
+
+
+		<div class="mui-input-row" style="text-align:center;margin:5px;display:block">
+			<button id="按钮6" type="button" class="mui-btn mui-btn-primary" style="width:100%;height:40px;float:none;margin:0px 0px 0px 0px;font-size:14px;">获取完整列表（需要一些时间）</button>
+		</div>
+
+		<div class="mui-card" style="margin:5px;display:block">
+			<ul id="列表框1" class="mui-table-view">
+			</ul>
+		</div>
+
+
 		<div class="mui-input-row" style="margin:5px;display:block">
-			<input id="编辑框2" type="text" placeholder="激活码" style="color:#000000;font-size:14px;margin:0px 0px 0px 0px;"></input>
+			<input id="编辑框1" type="text" placeholder="命令" style="color:#000000;font-size:14px;margin:0px 0px 0px 0px;"></input>
 		</div>
+
+		<div class="mui-input-row" style="text-align:center;margin:5px;display:block">
+			<button id="按钮4" type="button" class="mui-btn mui-btn-primary" style="width:100%;height:40px;float:none;margin:0px 0px 0px 0px;font-size:14px;">隐性执行</button>
 		</div>
-	</body>
-	<script src="js/mui.min.js"></script>
-	<script src="js/jiami.js"></script>
-	<script src="js/clipboard.js"></script>
-	<script src="js/clipboard.min.js"></script>
-	<script src="js/button.js"></script>
-	<script src="js/editBox.js"></script>
-	<script src="js/dialogBox.js"></script>
-	<script>
+
+		<div class="mui-input-row" style="text-align:center;margin:5px;display:block">
+			<button id="按钮5" type="button" class="mui-btn mui-btn-primary" style="width:100%;height:40px;float:none;margin:0px 0px 0px 0px;font-size:14px;">显性执行</button>
+		</div>
+
+		<div class="mui-input-row" style="margin:5px;display:block">
+			<input id="编辑框3" type="text" placeholder="显示文字" style="color:#000000;font-size:14px;margin:0px 0px 0px 0px;"></input>
+		</div>
+
+		<div class="mui-input-row" style="margin:5px;display:block">
+			<input id="编辑框4" type="text" placeholder="文字大小" style="color:#000000;font-size:14px;margin:0px 0px 0px 0px;"></input>
+		</div>
+
+		<div class="mui-input-row" style="margin:5px;display:block">
+			<input id="编辑框5" type="text" placeholder="文字颜色代码" style="color:#000000;font-size:14px;margin:0px 0px 0px 0px;"></input>
+		</div>
+
+		<div class="mui-input-row" style="margin:5px;display:block">
+			<label id="标签2" style="width:100%;color:#000000;font-size:19px;margin:0px 0px 0px 0px;padding:0px;text-align:left">红</label>
+		</div>
+
+		<div class="mui-input-row mui-input-range" style="margin:0px;display:block">
+			<input type="range" id="滑块条1" value="50" min="0" max="100" >
+		</div>
+
+		<div class="mui-input-row" style="margin:5px;display:block">
+			<label id="标签1" style="width:100%;color:#000000;font-size:19px;margin:0px 0px 0px 0px;padding:0px;text-align:left">绿</label>
+		</div>
+
+		<div class="mui-input-row mui-input-range" style="margin:0px;display:block">
+			<input type="range" id="滑块条2" value="50" min="0" max="100" >
+		</div>
+
+		<div class="mui-input-row" style="margin:5px;display:block">
+			<label id="标签3" style="width:100%;color:#000000;font-size:19px;margin:0px 0px 0px 0px;padding:0px;text-align:left">蓝</label>
+		</div>
+
+		<div class="mui-input-row mui-input-range" style="margin:0px;display:block">
+			<input type="range" id="滑块条3" value="50" min="0" max="100" >
+		</div>
+
+		<div id="按钮组2" class="mui-input-row" style="margin:5px;display:-webkit-flex;text-align:center;">
+			<button id="0" type="button" class="mui-btn mui-btn-primary" style="-webkit-flex:1;height:40px;margin:0px 0px 0px 0px;font-size:14px;">按钮0</button>
+			<button id="1" type="button" class="mui-btn mui-btn-primary" style="-webkit-flex:1;height:40px;margin:0px 0px 0px 5px;font-size:14px;">按钮1</button>
+		</div>
+
+
+
+	</div>
+</body>
+<script src="js/mui.min.js"></script>
+<script src="js/bluebird_titleBar.js"></script>
+<script src="js/bluebird_editBox.js"></script>
+<script src="js/bluebird_button.js"></script>
+<script src="js/bluebird_buttonRow.js"></script>
+<script src="js/bluebird_dialogBox.js"></script>
+<script src="js/bluebird_list.js"></script>
+<script src="js/bluebird_timer.js"></script>
+<script src="js/bluebird_lable.js"></script>
+<script src="js/bluebird_range.js"></script>
+<script src="js/bluebird_ajax.js"></script>
+<script src="js/bluebird_client.js"></script>
+<script src="js/bluebird_string.js"></script>
+<script src="js/bluebird_array.js"></script>
+<script src="js/bluebird_localStorage.js"></script>
+<script src="js/zai_daskjh.js"></script>
+<script src="js/zai_tool.js"></script>
+<script src="js/bluebird_convert.js"></script>
+<script>
 mui.init({swipeBack: false});
 
-var 编辑框1 = new 编辑框("编辑框1",null,null,null,null,null);
-var 编辑框2 = new 编辑框("编辑框2",null,null,null,null,null);
+var 标题栏1 = new 标题栏("标题栏1",null,null,null);
+var 编辑框2 = new 编辑框("编辑框2",null,null,编辑框2_内容被改变,编辑框2_失去焦点,null);
 var 按钮1 = new 按钮("按钮1",按钮1_被单击);
-var 剪贴板1 = new 剪贴板("剪贴板1");
-var 对话框1=new 对话框("对话框1");
+var 按钮3 = new 按钮("按钮3",按钮3_被单击);
+var 按钮组1 = new 按钮组("按钮组1",按钮组1_被单击);
+var 客户端1 = new 客户端("客户端1",客户端1_连接成功,客户端1_出现错误,客户端1_收到数据,null);
+var 按钮2 = new 按钮("按钮2",按钮2_被单击);
+var 对话框1 = new 对话框("对话框1",null,null,null);
+var 按钮6 = new 按钮("按钮6",按钮6_被单击);
+var 列表框1 = new 列表框("列表框1",false,null,列表框1_按钮被单击);
+var 时钟1 = new 时钟("时钟1",时钟1_周期事件);
+var 编辑框1 = new 编辑框("编辑框1",null,null,null,null,null);
+var 按钮4 = new 按钮("按钮4",按钮4_被单击);
+var 按钮5 = new 按钮("按钮5",按钮5_被单击);
+var 编辑框3 = new 编辑框("编辑框3",null,null,null,null,null);
+var 编辑框4 = new 编辑框("编辑框4",null,null,null,null,null);
+var 编辑框5 = new 编辑框("编辑框5",null,null,编辑框5_内容被改变,null,null);
+var 标签2 = new 标签("标签2",null);
+var 滑块条1 = new 滑块条("滑块条1",滑块条1_滑块被移动);
+var 标签1 = new 标签("标签1",null);
+var 滑块条2 = new 滑块条("滑块条2",滑块条2_滑块被移动);
+var 标签3 = new 标签("标签3",null);
+var 滑块条3 = new 滑块条("滑块条3",滑块条3_滑块被移动);
+var 按钮组2 = new 按钮组("按钮组2",按钮组2_被单击);
+var 网络操作1 = new 网络操作("网络操作1",网络操作1_发送完毕);
+var 网络操作2 = new 网络操作("网络操作2",网络操作2_发送完毕);
+var 网络操作3 = new 网络操作("网络操作3",网络操作3_发送完毕);
+if(mui.os.plus){
+    mui.plusReady(function() {
+        主窗口_创建完毕();
+    });
+}else{
+    window.onload=function(){ 
+        主窗口_创建完毕();
+    }
+}
 
 function 按钮1_被单击(){
-	编辑框2.置内容(CryptoJS.SHA1("lokok/*&^045515ui-=;][jh5359" + 编辑框1.取内容()+"*&koki&^%^4542klj67]][]']574545776gjf"));
-	剪贴板1.置剪贴板内容(编辑框2.取内容());
-	对话框1.弹出提示("已复制到剪贴板");
-	编辑框1.获取焦点();
+	if(编辑框2.取内容() == "" ){
+		return;
+	}
+	编辑框2.清除焦点();
+	客户端1.打开连接("ws://" + 编辑框2.取内容() +":5355");
 }
-	</script>
+
+function 按钮2_被单击(){
+	客户端1.发送数据("取进程列表");
+}
+
+function 按钮3_被单击(){
+	时钟1.停止执行();
+	客户端1.关闭连接();
+	编辑框2.清除焦点();
+}
+
+function 客户端1_连接成功(){
+	对话框1.信息框("信息","连接成功");
+	时钟1.开始执行(2000,true);
+}
+
+function 客户端1_出现错误(错误信息){
+	对话框1.信息框("信息","连接失败：" + 错误信息);
+	时钟1.停止执行();
+}
+
+function 客户端1_收到数据(数据){
+	if(文本操作.寻找文本(数据,"OK停止",0) != -1 ){
+		对话框1.信息框("信息","OK");
+		return;
+	}else{
+	    if(文本操作.寻找文本(数据,"进程列表",0) != -1 ){
+		    var 初始列表;
+			初始列表=文本操作.子文本替换(数据,"进程列表","");
+			var 处理后列表;
+			处理后列表=文本操作.分割文本(初始列表,"|");
+			var 已处理数= 0;
+			列表框1.置可视(true);
+			列表框1.清空项目();
+			while(已处理数 < 数组操作.取成员数(处理后列表)){
+				列表框1.添加项目(处理后列表[已处理数],"","mui-btn","结束进程");
+				已处理数=已处理数+1;
+			}
+		}
+	}
+}
+
+function 客户端1_连接断开(){
+	对话框1.信息框("信息","连接断开");
+}
+
+function 按钮组1_被单击(按钮索引){
+	if(按钮索引 == 0 ){
+	    客户端1.发送数据("开启线控");
+	}else{
+	    客户端1.发送数据("关闭线控");
+	}
+}
+
+function 主窗口_创建完毕(){
+	列表框1.置可视(false);
+	按钮组1.置标题(0,"开启线控");
+	按钮组1.置标题(1,"关闭线控");
+	按钮组2.置标题(0,"显示");
+	按钮组2.置标题(1,"关闭");
+	if(读写设置.读取设置("ip") != "" ){
+		编辑框2.置内容(读写设置.读取设置("ip"));
+	}
+	滑块条1.置最大位置(255);
+	滑块条2.置最大位置(255);
+	滑块条3.置最大位置(255);
+	滑块条1.置位置(0);
+	滑块条2.置位置(0);
+	滑块条3.置位置(0);
+}
+
+function 时钟1_周期事件(){
+	客户端1.发送数据("HeartBeat");
+}
+
+function 列表框1_按钮被单击(项目索引){
+	客户端1.发送数据("结束进程" + 列表框1.取项目标题(项目索引));
+}
+
+function 按钮4_被单击(){
+	客户端1.发送数据("隐性指令" + 编辑框1.取内容());
+	编辑框1.清除焦点();
+}
+
+function 按钮5_被单击(){
+	客户端1.发送数据("显性指令" + 编辑框1.取内容());
+	编辑框1.清除焦点();
+}
+
+function 编辑框2_内容被改变(内容){
+    读写设置.保存设置("ip",编辑框2.取内容());
+}
+
+function 编辑框2_失去焦点(){
+	读写设置.保存设置("ip",编辑框2.取内容());
+}
+
+function 按钮组2_被单击(按钮索引){
+	if(按钮索引 == 0 ){
+	    客户端1.发送数据("#print" + 编辑框3.取内容());
+		网络操作1.发送网络请求("https://od.lk/s/","get","txt","",200);
+		编辑框5.清除焦点();
+		编辑框4.清除焦点();
+		编辑框3.清除焦点();
+	}else{
+	    客户端1.发送数据("关闭显示");
+		编辑框5.清除焦点();
+		编辑框4.清除焦点();
+		编辑框3.清除焦点();
+	}
+}
+
+function 网络操作1_发送完毕(发送结果,返回信息){
+	客户端1.发送数据("#color" + 编辑框5.取内容());
+	网络操作2.发送网络请求("https://od.lk/s/","get","txt","",200);
+}
+
+function 网络操作2_发送完毕(发送结果,返回信息){
+	客户端1.发送数据("#size" + 编辑框4.取内容());
+}
+
+function 按钮6_被单击(){
+	网络操作3.发送网络请求("https://od.lk/s/NDZfODU0NzQzNF8/abc.txt","get","txt","",11000);
+}
+
+function 网络操作3_发送完毕(发送结果,返回信息){
+	if(文本操作.寻找文本(返回信息,"进程列表",0) != -1 ){
+		var 初始列表;
+		初始列表=文本操作.子文本替换(返回信息,"进程列表","");
+		var 处理后列表;
+		处理后列表=文本操作.分割文本(初始列表,"|");
+		var 已处理数= 0;
+		列表框1.置可视(true);
+		列表框1.清空项目();
+		while(已处理数 < 数组操作.取成员数(处理后列表)){
+			列表框1.添加项目(处理后列表[已处理数],"","mui-btn","结束进程");
+			已处理数=已处理数+1;
+		}
+	}
+}
+
+function 滑块条1_滑块被移动(位置){
+	编辑框5.置内容(转换操作.到文本(滑块条1.取位置()+ 滑块条2.取位置() * 256 + 滑块条3.取位置()*256*256));
+	var 红色代码;
+	var 绿色代码;
+	var 蓝色代码;
+	if(滑块条1.取位置() < 16 ){
+		红色代码="0"+ 转换操作.到十六进制(滑块条1.取位置());
+	}else{
+	    红色代码=转换操作.到十六进制(滑块条1.取位置());
+	}
+	if(滑块条2.取位置() < 16 ){
+		绿色代码="0"+ 转换操作.到十六进制(滑块条2.取位置());
+	}else{
+	    绿色代码=转换操作.到十六进制(滑块条2.取位置());
+	}
+	if(滑块条3.取位置() < 16 ){
+		蓝色代码="0"+ 转换操作.到十六进制(滑块条3.取位置());
+	}else{
+	    蓝色代码=转换操作.到十六进制(滑块条3.取位置());
+	}
+	标签1.置字体颜色("#" + 红色代码 + 绿色代码 + 蓝色代码);
+	标签2.置字体颜色("#" + 红色代码 + 绿色代码 + 蓝色代码);
+	标签3.置字体颜色("#" + 红色代码 + 绿色代码 + 蓝色代码);
+}
+
+function 滑块条2_滑块被移动(位置){
+	编辑框5.置内容(转换操作.到文本(滑块条1.取位置()+ 滑块条2.取位置() * 256 + 滑块条3.取位置()*256*256));
+	var 红色代码;
+	var 绿色代码;
+	var 蓝色代码;
+	if(滑块条1.取位置() < 16 ){
+		红色代码="0"+ 转换操作.到十六进制(滑块条1.取位置());
+	}else{
+	    红色代码=转换操作.到十六进制(滑块条1.取位置());
+	}
+	if(滑块条2.取位置() < 16 ){
+		绿色代码="0"+ 转换操作.到十六进制(滑块条2.取位置());
+	}else{
+	    绿色代码=转换操作.到十六进制(滑块条2.取位置());
+	}
+	if(滑块条3.取位置() < 16 ){
+		蓝色代码="0"+ 转换操作.到十六进制(滑块条3.取位置());
+	}else{
+	    蓝色代码=转换操作.到十六进制(滑块条3.取位置());
+	}
+	标签1.置字体颜色("#" + 红色代码 + 绿色代码 + 蓝色代码);
+	标签2.置字体颜色("#" + 红色代码 + 绿色代码 + 蓝色代码);
+	标签3.置字体颜色("#" + 红色代码 + 绿色代码 + 蓝色代码);
+}
+
+function 滑块条3_滑块被移动(位置){
+		编辑框5.置内容(转换操作.到文本(滑块条1.取位置()+ 滑块条2.取位置() * 256 + 滑块条3.取位置()*256*256));
+	var 红色代码;
+	var 绿色代码;
+	var 蓝色代码;
+	if(滑块条1.取位置() < 16 ){
+		红色代码="0"+ 转换操作.到十六进制(滑块条1.取位置());
+	}else{
+	    红色代码=转换操作.到十六进制(滑块条1.取位置());
+	}
+	if(滑块条2.取位置() < 16 ){
+		绿色代码="0"+ 转换操作.到十六进制(滑块条2.取位置());
+	}else{
+	    绿色代码=转换操作.到十六进制(滑块条2.取位置());
+	}
+	if(滑块条3.取位置() < 16 ){
+		蓝色代码="0"+ 转换操作.到十六进制(滑块条3.取位置());
+	}else{
+	    蓝色代码=转换操作.到十六进制(滑块条3.取位置());
+	}
+	标签1.置字体颜色("#" + 红色代码 + 绿色代码 + 蓝色代码);
+	标签2.置字体颜色("#" + 红色代码 + 绿色代码 + 蓝色代码);
+	标签3.置字体颜色("#" + 红色代码 + 绿色代码 + 蓝色代码);
+}
+
+function 编辑框5_内容被改变(内容){
+	if(文本操作.寻找文本(编辑框5.取内容(),"#",0) != -1 && 文本操作.取文本长度(编辑框5.取内容()) == 7 ){
+		var 操作文本;
+	    var 红;
+	    var 绿;
+	    var 蓝;
+		操作文本=文本操作.子文本替换(编辑框5.取内容(),"#","");
+		红=转换操作.到文本(转换操作.到十进制(文本操作.取文本中间(操作文本,0,2)));
+		绿=转换操作.到文本(转换操作.到十进制(文本操作.取文本中间(操作文本,2,2)));
+		蓝=转换操作.到文本(转换操作.到十进制(文本操作.取文本中间(操作文本,4,2)));
+		滑块条1.置位置(转换操作.到数值(红));
+		滑块条2.置位置(转换操作.到数值(绿));
+		滑块条3.置位置(转换操作.到数值(蓝));
+		编辑框5.置内容(转换操作.到文本(滑块条1.取位置()+ 滑块条2.取位置() * 256 + 滑块条3.取位置()*256*256));
+	    标签1.置字体颜色("#" + 转换操作.到十六进制(转换操作.到数值(红)) + 转换操作.到十六进制(转换操作.到数值(绿)) + 转换操作.到十六进制(转换操作.到数值(蓝)));
+	    标签2.置字体颜色("#" + 转换操作.到十六进制(转换操作.到数值(红)) + 转换操作.到十六进制(转换操作.到数值(绿)) + 转换操作.到十六进制(转换操作.到数值(蓝)));
+	    标签3.置字体颜色("#" + 转换操作.到十六进制(转换操作.到数值(红)) + 转换操作.到十六进制(转换操作.到数值(绿)) + 转换操作.到十六进制(转换操作.到数值(蓝)));
+		编辑框5.清除焦点();
+	}
+}
+</script>
 </html>
